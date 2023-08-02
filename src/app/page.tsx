@@ -1,21 +1,14 @@
 "use client";
+import Boards from "./components/Boards";
 import Image from "next/image";
-import NavigationBar from "./components/NavigationBar";
-import Footer from "./components/Footer";
-import { useEffect } from "react";
-import { auth } from "@/firebase/firebase";
 
 export default function Home() {
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      console.log(user);
-    });
-  }, []);
   return (
-    <>
-      <NavigationBar />
-      <div>메인</div>
-      <Footer />
-    </>
+    <div className="darkAndlight flex flex-col h-full relative">
+      <div className="flex justify-center">
+        <Image src="/bloglogo.png" width={110} height={80} alt="로고 이미지 " />
+      </div>
+      <Boards />
+    </div>
   );
 }

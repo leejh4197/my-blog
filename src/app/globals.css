@@ -4,11 +4,11 @@
 
 body {
   text-align: center;
-  background-color: #f88379;
+  height: 100vh;
 }
 
-/* customYellow: "#FFDB58",
-        customGreen: "#98FF98",
-        customBlue: "#0047AB",
-        customPink: "#F88379",
-        mainColor: "#FF7F50", */
+@layer components {
+  .darkAndlight {
+    @apply bg-bgLightColor text-textLightColor dark:bg-bgDarkColor dark:text-textDarkColor;
+  }
+}
