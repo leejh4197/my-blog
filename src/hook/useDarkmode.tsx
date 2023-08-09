@@ -8,7 +8,9 @@ const useDarkmode = (): [string, Dispatch<SetStateAction<string>>] => {
   const colorTheme = theme === "dark" ? "light" : "dark";
   // class에 dark를 넣고 뺀다
   useEffect(() => {
-    const root = window.document.documentElement;
+    console.log(window.document.body);
+    // const root = window.document.documentElement;
+    const root = window.document.body;
     root.classList.remove(colorTheme);
     root.classList.add(theme);
 

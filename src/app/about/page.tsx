@@ -1,7 +1,7 @@
 import React from "react";
 
-const page = () => {
-  return <div>어바웃 페이지</div>;
+const About = () => {
+  return <div className="darkAndlight">어바웃 페이지</div>;
 };
 
-export default page;
+export default About;

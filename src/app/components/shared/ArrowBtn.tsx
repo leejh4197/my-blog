@@ -7,7 +7,9 @@ interface BtnProps {
 
 const ArrowBtn = ({ label, className }: BtnProps) => {
   return (
-    <button className={`bg-yellow-300 p-6 mb-5 rounded-lg${className}`}>
+    <button
+      className={`border-grayLine border rounded-lg px-4 py-2 ${className}`}
+    >
       {label}
     </button>
   );

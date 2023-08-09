@@ -4,11 +4,13 @@
 
 body {
   text-align: center;
-  height: 100vh;
+  padding-bottom: 150px;
 }
-
+body.dark {
+  background-color: black;
+}
 @layer components {
   .darkAndlight {
-    @apply bg-bgLightColor text-textLightColor dark:bg-bgDarkColor dark:text-textDarkColor;
+    @apply bg-white text-black dark:bg-black dark:text-white;
   }
 }

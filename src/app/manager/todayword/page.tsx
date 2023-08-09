@@ -1,7 +1,13 @@
 import React from "react";
 
-const page = () => {
-  return <div>오늘의 한마디 페이지</div>;
+const TodayWord = () => {
+  return (
+    <div className="darkAndlight">
+      <h1>오늘의 한마디</h1>
+      <input className="border outline-none mr-3" type="text" />
+      <button className="border rounded-lg p-1">허세버튼</button>
+    </div>
+  );
 };
 
-export default page;
+export default TodayWord;
