@@ -43,7 +43,7 @@ const NavigationBar = () => {
   }, [darkSide]);
   return (
     <nav
-      className={`sticky top-0 darkAndlight border-b border-grayLine flex w-full h-20 justify-between ${
+      className={`z-50 sticky top-0 darkAndlight border-b border-grayLine flex w-full h-20 justify-between ${
         visible ? "opacity-100 " : "opacity-0 pointer-events-none"
       } transition-opacity duration-300 transform`}
     >
@@ -55,6 +55,7 @@ const NavigationBar = () => {
         width={110}
         height={80}
         alt="로고 이미지 "
+        className="rounded-[50%]"
       />
       <div
         className={`flex items-center w-96 justify-between pr-10 lg:w-80 ${

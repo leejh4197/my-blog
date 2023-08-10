@@ -5,12 +5,37 @@
 body {
   text-align: center;
   padding-bottom: 150px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 body.dark {
   background-color: black;
 }
+
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer components {
   .darkAndlight {
     @apply bg-white text-black dark:bg-black dark:text-white;
+  }
+  .marquee-container {
+    @apply flex overflow-hidden relative;
+  }
+  .animate-marquee {
+    animation: marquee 10s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }

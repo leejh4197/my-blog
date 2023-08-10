@@ -25,6 +25,9 @@ module.exports = {
         bgLightColor: "#F5F5F5",
         textLightColor: "#3CB371",
       },
+      fontFamily: {
+        sans: ["GangwonEdu_OTFBoldA", "Arial", "sans-serif"],
+      },
     },
   },
   plugins: [],
