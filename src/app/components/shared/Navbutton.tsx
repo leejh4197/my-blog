@@ -19,7 +19,7 @@ const Navbutton = ({ className, label, path, own }: BtnProps) => {
   return (
     <button
       onClick={handleClick}
-      className={`hover:font-bold focus:font-bold ${className}`}
+      className={`hover:font-bold focus:font-extrabold focus:text-lg ${className}`}
     >
       {label}
     </button>

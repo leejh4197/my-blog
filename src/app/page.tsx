@@ -1,8 +1,10 @@
 "use client";
 import Boards from "./components/Boards";
 import Image from "next/image";
+import { auth } from "./util/fbase";
 
 export default function Home() {
+  console.log(auth);
   return (
     <div className="darkAndlight flex flex-col">
       <div className="flex justify-center">
