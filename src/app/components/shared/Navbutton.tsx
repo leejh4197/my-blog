@@ -13,7 +13,7 @@ const Navbutton = ({ className, label, path, own }: BtnProps) => {
     if (!own) {
       router.push("/404"); // 페이지가 없는 경우 404 페이지로 리다이렉션
     } else {
-      router.push(path);
+      router.push(`/${path}`);
     }
   };
   return (
