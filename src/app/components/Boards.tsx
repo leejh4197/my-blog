@@ -77,7 +77,7 @@ const Boards = () => {
       {boardDummy.map((data, index) => {
         return (
           <Link
-            className="flex justify-center items-center w-full"
+            className="flex justify-center items-center w-full no-underline"
             key={index}
             href={`/blogpost/${data.date}`}
           >

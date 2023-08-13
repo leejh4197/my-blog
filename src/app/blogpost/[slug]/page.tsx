@@ -20,9 +20,8 @@ const BlogPosts = () => {
           </p>
           <div className="ql-size-large">큰 글씨</div>
           <p>사진도 넣어볼게요</p>
-          <blockquote>
-            <p>이건코드임요</p>
-          </blockquote>
+          <blockquote>태그먹힘?</blockquote>
+          <p></p>
           <u>먹히나 ?</u>
         </div>
       </div>
