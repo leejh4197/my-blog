@@ -1,6 +1,10 @@
 "use client";
-import BoardEditor from "@/app/components/BoardEditor";
+// import BoardEditor from "@/app/components/BoardEditor";
+import dynamic from "next/dynamic";
 import React from "react";
+const NoSsrWysiwyg = dynamic(() => import("@/app/components/ToastEditor"), {
+  ssr: false,
+});
 
 const Write = () => {
   return (
@@ -16,7 +20,7 @@ const Write = () => {
           <button className="px-3 py-2 rounded-lg border ">글쓰기</button>
         </div>
 
-        <BoardEditor />
+        <NoSsrWysiwyg />
       </div>
     </div>
   );
