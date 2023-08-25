@@ -1,91 +1,49 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Board from "./shared/Board";
 import ArrowBtn from "./shared/ArrowBtn";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { collection, onSnapshot } from "firebase/firestore";
+import { dbService } from "../util/fbase";
+
+interface Content {
+  id: string;
+  title: string;
+  content: string;
+  time: string;
+  briefContent: string;
+  hash: string[];
+}
 
 const Boards = () => {
+  const [contents, setContents] = useState<Content[]>([]);
+  console.log(contents);
+  useEffect(() => {
+    onSnapshot(collection(dbService, "content"), (snapshot) => {
+      const contentArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Content[];
+      setContents(contentArray);
+    });
+  }, []);
   const pathName = usePathname();
-  console.log(pathName);
-  const boardDummy = [
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.01",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.02",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.03",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.04",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.05",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.06",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.07",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.08",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-    {
-      title: "블로그 제목",
-      content:
-        " 블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용 내용블로그 내용",
-      date: "2022.01.09",
-      hash: ["찐맛집", "찐추천", "찐최고"],
-    },
-  ];
+
   return (
     <div className="flex flex-col justify-center items-center h-full">
-      {boardDummy.map((data, index) => {
+      {contents.map((data, index) => {
         return (
           <Link
             className="flex justify-center items-center w-full no-underline"
             key={index}
-            href={`/blogpost/${data.date}`}
+            href={`/blogpost/${data.id}`}
           >
             <Board
               key={index}
               title={data.title}
-              content={data.content}
-              date={data.date}
+              content={data.briefContent}
+              time={data.time}
               hash={data.hash}
             />
           </Link>
