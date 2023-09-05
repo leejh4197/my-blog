@@ -2,26 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  text-align: center;
+  padding-bottom: 150px;
+}
+body.dark {
+  background-color: black;
+}
+a {
+  color: #0ea5e9;
+  text-decoration: underline;
+}
+/* 전체 코드 블록 스타일 */
+pre {
+  background-color: #1e1e1e; /* 배경색 */
+  color: #eaeaea; /* 텍스트 색상 */
+  padding: 10px; /* 안쪽 여백 */
+  border-radius: 4px; /* 테두리 둥글기 */
+  overflow: auto; /* 스크롤 가능하도록 설정 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* 내부 코드 스타일 */
+code {
+  font-family: "Courier New", monospace; /* 폰트 설정 */
+}
+
+/* 코드 블록의 스크롤바 스타일 (선택 사항) */
+pre::-webkit-scrollbar {
+  width: 8px; /* 세로 스크롤바 너비 */
+}
+
+pre::-webkit-scrollbar-thumb {
+  background-color: #444; /* 스크롤바 색상 */
+  border-radius: 4px; /* 스크롤바 둥글기 */
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* 스크롤바 호버 시 색상 */
+}
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer components {
+  .darkAndlight {
+    @apply bg-white text-black dark:bg-black dark:text-white;
+  }
+  .marquee-container {
+    @apply flex overflow-hidden relative;
+  }
+  .animate-marquee {
+    animation: marquee 10s linear infinite;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
