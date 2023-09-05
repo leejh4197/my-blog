@@ -4,7 +4,7 @@ import Board from "./shared/Board";
 import ArrowBtn from "./shared/ArrowBtn";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { dbService } from "../util/fbase";
 
 interface Content {
@@ -18,7 +18,6 @@ interface Content {
 
 const Boards = () => {
   const [contents, setContents] = useState<Content[]>([]);
-  console.log(contents);
   useEffect(() => {
     onSnapshot(collection(dbService, "content"), (snapshot) => {
       const contentArray = snapshot.docs.map((doc) => ({
