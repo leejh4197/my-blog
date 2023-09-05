@@ -14,6 +14,18 @@ declare interface Date {
 }
 
 const ToastEditor = () => {
+  const nowTime = new Date();
+
+  const sus = nowTime.getFullYear();
+  const ekf = ("0" + (nowTime.getMonth() + 1)).slice(-2);
+  const day = ("0" + nowTime.getDate()).slice(-2);
+  const hours = ("0" + nowTime.getHours()).slice(-2);
+  const minutes = ("0" + nowTime.getMinutes()).slice(-2);
+  const seconds = ("0" + nowTime.getSeconds()).slice(-2);
+
+  const dateString =
+    sus + "-" + ekf + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [briefContent, setBriefContent] = useState("");
@@ -51,6 +63,7 @@ const ToastEditor = () => {
           time: today,
           briefContent: briefContent,
           hash: [13, 123, 123],
+          sortTime: dateString,
         });
         router.push("/");
       }
@@ -73,7 +86,6 @@ const ToastEditor = () => {
     "Nov",
     "Dec",
   ];
-  const nowTime = new Date();
   const year = nowTime.getFullYear(); // 년도
   const date = nowTime.getDate(); // 날짜
   const time = nowTime.getHours();
